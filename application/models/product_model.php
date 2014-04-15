@@ -14,11 +14,19 @@
         // Call the Model constructor
         parent::__construct();
         $this->load->database();
+
+        /**
+        * In usual PHP
+        * to connect to a database you use:
+        *  mysql_connect('localhost:3306', 'mysql_user', 'mysql_password');
+        **/
+
         $this->load->helper("url");
 
     }
     function show_entry($offset=0){
         $sql = "SELECT * FROM products WHERE status='avaiable' LIMIT $offset";
+
         $products = $this->db->query($sql);
         if($products->num_rows() > 0){
 
@@ -38,6 +46,12 @@
         $email = $this->db->escape($email);
         $sql = "INSERT INTO user (username, password, name, email) VALUES($username, $password, $name, $email)";
         $query = $this->db->query($sql);
+        /**
+        *   in Usual PHP
+        *   you run query like this:
+        *   $query = "SELECT * FROM products";
+        *   mysql_query($query);
+        **/
         return $query;
     }
     function check_entry($username, $password){
