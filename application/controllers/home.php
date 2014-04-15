@@ -18,7 +18,7 @@ class Home extends CI_Controller {
 
 		//
 		$data['products']=$products;
-
+		$this->load->view('products',$data);
 	}
 }
 
